@@ -5,12 +5,12 @@ DEFAULT_THICKNESS = 4;  // Manufacturing-driven default. Get some layers in ther
 
 module handlebar_mount (
   width,
-  bolt = "M5",
+  diameter = DEFAULT_DIAMETER,
+  angle = 320,            // Reasonable default.
+  bolt_size = "M5",
   bolt_kind = "socket_head",
   bolt_countersink = 0.5,
   bolt_mount_length = 14, // Reasonable default for an M5 bolt.
-  diameter = DEFAULT_DIAMETER,
-  angle = 320,            // Reasonable default.
   thickness = DEFAULT_THICKNESS,
   top_offset = 0,         // Cut this much off the top (screw side), making part of the top flat. Only makes sense if angle > 270.
   // XXX(mmalecki): center_offset - cut this much off the center (usecase: flashlight mounting)
@@ -47,12 +47,12 @@ module handlebar_mount (
           rotate([90, 0, -rotate_facing]) {
             translate([0, 0, -thickness]) {
               translate([bolt_mount_length / 2 + thickness / 4, width / 2, 0]){
-                bolt(bolt,
+                bolt(bolt_size,
                   kind = bolt_kind,
                   countersink = bolt_countersink,
                   length = sin((360 - angle) / 2) * diameter + 2 * thickness
                 );
-                nutcatch_parallel(bolt);
+                nutcatch_parallel(bolt_size);
               }
             }
           }
