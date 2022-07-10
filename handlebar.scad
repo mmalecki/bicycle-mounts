@@ -13,8 +13,8 @@ module handlebar_mount (
   angle = 320,            // Reasonable default.
   thickness = DEFAULT_THICKNESS,
   top_offset = 0,         // Cut this much off the top (screw side), making part of the top flat. Only makes sense if angle > 270.
-  // XXX(mmalecki): center_offset - cut this much off the center
-  // XXX(mmalecki): bottom_offset - cut this much off the center
+  // XXX(mmalecki): center_offset - cut this much off the center (usecase: flashlight mounting)
+  // XXX(mmalecki): bottom_offset - cut this much off the bottom (usecase: uhh?)
 ) {
   rotate_facing = (360 - angle) / 2;
 
